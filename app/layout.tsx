@@ -1,36 +1,37 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { ThemeProvider } from "@/components/ThemeProvider";
+import Navigation from "@/components/Navigation";
 import "./globals.css";
-import { ThemeProvider } from "../components/ThemeProvider";
-import Navigation from "../components/Navigation";
-
-const inter = Inter({ subsets: ["latin"], variable: '--font-inter' });
 
 export const metadata: Metadata = {
-  title: "Vidya Printers | ERP",
-  description: "Enterprise Management System",
+  title: "Vidya Printers ERP",
+  description: "Enterprise management system for Vidya Printers",
 };
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
-        {/* Import Google Material Symbols exactly as Stitch did */}
-        <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+        {/* This line loads all the beautiful Material icons you used in your Navigation */}
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
       </head>
-      <body className={`${inter.variable} bg-bg-main text-text-main w-full h-full md:min-h-screen overflow-x-hidden antialiased`}>
-        <ThemeProvider>
-          <div className="flex flex-col md:flex-row h-screen md:min-h-screen">
+      <body className="antialiased overflow-x-hidden">
+        <ThemeProvider attribute="class" defaultTheme="light" enableSystem={false}>
+          {/* Main Layout Wrapper */}
+          <div className="flex h-screen w-full overflow-hidden bg-[var(--bg)] text-[var(--text)] transition-colors duration-300">
+            
+            {/* The beautiful Sidebar / Mobile Bottom Nav you built */}
             <Navigation />
             
-            {/* Main Content Area - Padding adjusted for mobile bottom nav */}
-            <main className="flex-1 w-full max-w-7xl mx-auto h-full overflow-y-auto bg-bg-main">
+            {/* The Main Content Area where your pages will load */}
+            <main className="flex-1 h-full overflow-y-auto relative pb-20 md:pb-0 scrollbar-hide">
               {children}
             </main>
+            
           </div>
         </ThemeProvider>
       </body>

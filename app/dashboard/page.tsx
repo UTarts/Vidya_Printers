@@ -40,7 +40,7 @@ export default function DashboardPage() {
   return (
     <div className="flex-1 flex flex-col relative w-full mx-auto min-h-screen">
       {/* Header */}
-      <div className="flex items-center justify-between p-5 pt-8 sticky top-0 z-10 bg-bg-main/90 backdrop-blur-md">
+      <div className="flex items-center justify-between p-5 pt-8 sticky top-0 z-50 bg-bg-main/90 backdrop-blur-md">
         <div className="flex items-center gap-3">
           <h1 className="text-2xl font-black tracking-tight text-text-main">Master Dashboard</h1>
         </div>
